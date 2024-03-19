@@ -1,0 +1,33 @@
+<button onclick="ejecutar()">ejecutar</button>
+<input value="" id="inputChange" type="text">
+<label id="idtexto">Lorem, ipsum dolor.</label>
+<label id="idtexto2">Cargue algo por favor.</label>
+
+<script>
+    document.getElementById('idtexto').style.display = 'none'
+    document.getElementById('idtexto2').style.display = 'none'
+
+    
+    const ejecutar = () => {
+        
+        const inputValue = document.getElementById('inputChange').value
+
+        if(!inputValue){
+            console.log(inputValue)
+            document.getElementById('idtexto').style.display = 'block'
+            document.getElementById('idtexto2').style.display = 'block'
+            document.getElementById("idtexto").style.color = 'red';
+            document.getElementById("idtexto").style.backgroundColor = 'yellow';
+            document.getElementById('idtexto').innerHTML = "texto cargado";
+        } else {
+            document.getElementById('idtexto').style.display = 'none'
+            document.getElementById('idtexto2').style.display = 'none'
+            
+            alert(inputValue);
+
+            console.log(inputValue)
+
+        }
+        
+    }
+</script>

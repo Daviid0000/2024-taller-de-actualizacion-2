@@ -1,0 +1,36 @@
+Ejemplos:
+------------------------------------
+protocolo: ssh
+ip: 10.78.17.1
+puerto: 98
+------------------------------------
+protocolo: ftp
+ip: 192.10.11.
+puerto:
+------------------------------------
+protocolo:
+ip:
+puerto:
+------------------------------------
+protocolo:
+ip:
+puerto:
+------------------------------------
+protocolo:
+ip:
+puerto:
+------------------------------------
+protocolo:
+ip:
+puerto:
+------------------------------------
+
+
+comando para conectarme a otro servidor
+
+mysql -u -h -P -p
+
+-u : user del cliente
+-h : host del cliente
+-P : puerto del cliente
+-p : password del cliente
