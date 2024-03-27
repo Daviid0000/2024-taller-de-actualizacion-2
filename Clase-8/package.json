@@ -1,0 +1,27 @@
+{
+  "name": "clase-8",
+  "version": "1.0.0",
+  "description": "Multiplicando Matrices",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev":"nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Daviid0000/2024-taller-de-actualizaci-n-2.git"
+  },
+  "author": "Liva David",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Daviid0000/2024-taller-de-actualizaci-n-2/issues"
+  },
+  "homepage": "https://github.com/Daviid0000/2024-taller-de-actualizaci-n-2#readme",
+  "dependencies": {
+    "express": "^4.19.2",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}

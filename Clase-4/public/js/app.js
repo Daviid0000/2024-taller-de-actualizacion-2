@@ -1,6 +1,15 @@
 let array1 = [];
 let array2 = [];
 
+const validationInputs = () => {
+        console.log('Rellene todos los campos')
+        const message = document.getElementById('message')
+
+        message.textContent = 'Rellene todos los campos.'
+        message.style.color = 'red'
+        message.style.padding = '10px'
+}
+
 const ElButton = document.getElementById('sumElements')
 
 ElButton.addEventListener('click', () => {
@@ -10,35 +19,38 @@ ElButton.addEventListener('click', () => {
     let col_1 = document.getElementById('col-1').value
     let col_2 = document.getElementById('col-2').value
 
+    if(raw_1 == '' || raw_2 == ''){
+        return validationInputs()
+    }
 
-    if((raw_1 == '' || raw_2 == '')&& (col_1 == '' || col_2 == '')){
-        console.log('Rellene todos los campos')
-        const message = document.getElementById('message')
-
-        message.textContent = 'Rellene todos los campos.'
-        message.style.color = 'red'
-        message.style.padding = '10px'
-    }else{
+    if(col_1 == '' || col_2 == ''){   
+        return validationInputs()
+}else{
         document.getElementById('raw-1').value = '';
         document.getElementById('raw-2').value = '';
         document.getElementById('col-1').value = '';
         document.getElementById('col-2').value = '';
-
+        
         array1.push(parseInt(raw_1), parseInt(raw_2))
         array2.push(parseInt(col_1), parseInt(col_2))
-
+        
+        console.log('Valores del primer array: ', array1)
+        console.log('Valores del segundo array: ', array2)
+        
         if(array1.length === array2.length){
             let sumArray = [];
             for (let i = 0; i < array1.length; i++) {
                 sumArray.push(array1[i] + array2[i])
             }
+        
         let matriz_3 = document.getElementById('matriz-3');
+        
         const title = document.createElement('h3');
-            message.style.display = 'none';
-
             
-
-            matriz_3.innerHTML = ''            
+            message.style.display = 'none';
+            
+            matriz_3.innerHTML = ''      
+              
             matriz_3.appendChild(title);
             matriz_3.style.border = '2px solid #000'
             matriz_3.style.padding = '10px'
@@ -61,10 +73,9 @@ ElButton.addEventListener('click', () => {
 
         } else {
             console.log('Los arrays no tienen la misma longitud')
+            alert('Los arrays no tienen la misma longitud')
         }
 
-        console.log('Valores del primer array: ', array1)
-        console.log('Valores del segundo array: ', array2)
 
     }
 
