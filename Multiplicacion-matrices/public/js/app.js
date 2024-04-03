@@ -1,6 +1,7 @@
 const validationInputs = () => {
-        console.log('Rellene todos los campos')
-        const messageAlert1 = document.getElementById('messageAlert1')
+    console.log('Rellene todos los campos')
+    const messageAlert1 = document.getElementById('messageAlert1')
+        messageAlert1.style.display = 'inline-block'
 
         messageAlert1.textContent = 'Rellene todos los campos.'
         messageAlert1.style.color = 'red'
@@ -29,10 +30,10 @@ const ElButton2 = document.getElementById('multElements');
 
 ElButton.addEventListener('click', () => {
     
-    let val_f_m_1 = document.getElementById('raw-1').value
-    let val_c_m_1 = document.getElementById('raw-2').value
-    let val_f_m_2 = document.getElementById('col-1').value
-    let val_c_m_2 = document.getElementById('col-2').value
+    let val_f_m_1 = document.getElementById('row-m-1').value
+    let val_c_m_1 = document.getElementById('col-m-1').value
+    let val_f_m_2 = document.getElementById('row-m-2').value
+    let val_c_m_2 = document.getElementById('col-m-2').value
 
     if(val_f_m_1 == '' || val_c_m_1 == ''){
         return validationInputs();
@@ -132,19 +133,38 @@ ElButton2.addEventListener('click', () => {
     const inputsMatriz1 = document.querySelectorAll('#matriz-1 input[type="number"]');
     const inputsMatriz2 = document.querySelectorAll('#matriz-2 input[type="number"]');
     
+    
+     for (const input of inputsMatriz1) {
+        if (input.value === '') {
+            console.log("Rellene todos los campos de la matriz 1");
+            return validationInputs(); 
+        }
+    }
+    
+    
+    for (const input of inputsMatriz2) {
+        if (input.value === '') {
+            console.log("Rellene todos los campos de la matriz 2");
+            return validationInputs(); 
+        }
+    }
+
+
     const valoresMatriz1 = [];
     inputsMatriz1.forEach(input => {
         valoresMatriz1.push(parseInt(input.value))
+        
     })
     
     const valoresMatriz2 = [];
     inputsMatriz2.forEach(input => {
         valoresMatriz2.push(parseInt(input.value))
+        
     })
     
-    let val_f_m_1 = document.getElementById('raw-1').value;
-    let val_c_m_1 = document.getElementById('raw-2').value;
-    let val_c_m_2 = document.getElementById('col-2').value;
+    let val_f_m_1 = document.getElementById('row-m-1').value;
+    let val_c_m_1 = document.getElementById('col-m-1').value;
+    let val_c_m_2 = document.getElementById('col-m-2').value;
 
     console.log('Los valores de la matriz 1 son: ', valoresMatriz1)
     console.log('Los valores de la matriz 2 son: ', valoresMatriz2)
