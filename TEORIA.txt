@@ -1,0 +1,19 @@
+
+Cómo aprende una persona.
+
+Observa su entorno y aprende del mismo.
+
+Tensor flow es un marco de desarroollo de aprendisaje automático
+
+
+Supervizado: El profesor te da la respuesta.
+No Supervizado: Tienes que descubrir la respuesta.
+Semisupervizado: Tienes algunas pistas para ayudarte a descubrir la respuesta.
+Reforzamiento: Aprendes a tomar acciones que te dan un recomensa.
+
+Tensor flow es un libreria para programar
+Tensor flow es de Google
+
+IoT: el internet de las cosas
+
+Ardruino: Placas programables
