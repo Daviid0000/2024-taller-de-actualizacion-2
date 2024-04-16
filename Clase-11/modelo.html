@@ -5,9 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modelo con TensorFlow</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/4.17.0/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-vis"></script>
 </head>
 <body>
     <div id="output-field"></div>
+
+    <div id="loss-graph"></div>
+
 
     <script>
         async function learnLineal(){
@@ -22,13 +26,24 @@
 
             const xs = tf.tensor2d([-1, 0, 1, 2, 3, 4], [6, 1]);
             const ys = tf.tensor2d([-3, -1, 1, 3, 5, 7], [6, 1]);
-        
-            await model.fit(xs, ys, {epochs: 500});
 
+            const surface = { name: 'Loss', tab: 'Training' };
+            const history = [];
+
+            await model.fit(xs, ys, {
+                epochs: 50,
+                callbacks: {
+                    onEpochEnd: (epoch, log) => {
+                        history.push(log);
+                        tfvis.show.history(surface, history, ['loss']);
+                    }
+                }
+            });
             document.getElementById('output-field').innerText = model.predict(tf.tensor2d([20], [1, 1]));
         }
 
-        learnLineal();
+learnLineal();
+
     </script>
 </body>
 </html>
