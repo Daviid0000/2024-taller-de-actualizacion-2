@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TensorFlow.js Example</title>
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.11.0/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-vis"></script>
 </head>
 <body>
   <h1>TensorFlow.js Example</h1>
@@ -23,20 +24,37 @@
   <script>
     const model = tf.sequential();
     model.add(tf.layers.dense({units: 1, inputShape: [1]}));
-
     model.compile({loss: 'meanSquaredError', optimizer: 'sgd'});
 
-    const xs = tf.tensor2d([-6, -5, -4, -3, -2, -1, 0, 1, 2], [9, 1]);
-    const ys = tf.tensor2d([-6, -4, -2, 0, 2, 4, 6, 8, 10], [9, 1]);
+  const xs = tf.tensor2d([-6, -5, -4, -3, -2, -1, 0, 1, 2], [9, 1]);
+  const ys = tf.tensor2d([-6, -4, -2, 0, 2, 4, 6, 8, 10], [9, 1]);
+
+    async function modeloEntrenado(){
+      const surface = { name: 'Loss', tab: 'Training' };
+      const history = [];
+
+      await model.fit(xs, ys, {
+        epochs: 50,
+        callbacks: {
+          onEpochEnd: (epoch, log) => {
+          history.push(log);
+          tfvis.show.history(surface, history, ['loss']);
+          }
+        }
+      })
+
+    }
 
     async function trainModel() {
       const entrenamiento = document.getElementById('entrenamiento');
+      await modeloEntrenado();
       await model.fit(xs, ys, {epochs: 250});
       console.log('Entrenamiento completado');
       
       const content = document.createElement('div')
       content.textContent = 'Entrenamiento completado.'
       entrenamiento.appendChild(content)
+
     }
 
     async function predict() {

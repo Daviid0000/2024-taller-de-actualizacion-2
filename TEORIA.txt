@@ -17,3 +17,8 @@ Tensor flow es de Google
 IoT: el internet de las cosas
 
 Ardruino: Placas programables
+
+
+--------------------------------------------------------------------------------------------
+
+Una neurona es un calculo matemático lineal

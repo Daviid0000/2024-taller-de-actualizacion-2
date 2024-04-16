@@ -166,7 +166,7 @@ ElButton2.addEventListener('click', () => {
     console.log('Cantidad de valores de la fila de la matriz 1 son :', val_f_m_1)
     console.log('Cantidad de valores de la columna de la matriz 2 son: ', val_c_m_2)
     
-            let resultados = [];
+            const resultados = [];
             for (let i = 0; i < val_f_m_1; i++) {
                 const resultadosFila = [];
 
