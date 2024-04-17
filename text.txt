@@ -1,0 +1,161 @@
+_______________________________________________________________________________________________________________________________________
+
+A través de una serie de datos pasados al modelo este se aproxima al valor que brinda la ecuación 2x + 6
+
+1. Se agregan las capas con model.add
+2. Se le especifica la formula que usará con model.compile
+
+Hasta aquií se ha configurado el modelo, se le ha dicho qué deberá hacer, aunque aún no hara nada en este punto.
+
+_______________________________________________________________________________________________________________________________________
+
+Matriz 2d
+[
+    [1],  Esto es un escalar
+    [2],
+    [3],
+    [4],
+    [5],
+    [6],
+]
+
+_______________________________________________________________________________________________________________________________________
+
+Para crear un tensor tenemos varios tipos de entrada que se sespecifican dentro de:
+
+tf.tensor(            )
+
+Tipos de entrada:
+
+(shape, )
+
+Dependiendo de la forma(shape) se va a confugirar
+
+ejemplo de forma(shape):
+
+[n, 1]
+
+Lo que esto haría seria algo así:
+
+[ 
+    [0,0],
+    [0,0],
+    [0,0],
+]
+
+tf.tensor2d(val, td)
+
+Una vez que se crea el tensor ya no se puede modificar.
+
+En este caso no se puede modicarlos pero se pueden crear nuevos tensores, por ejemplo en un entrenamiento de 100 fotos, cada foto se transforma en un tensor.
+
+_______________________________________________________________________________________________________________________________________
+
+tf.memory().
+
+Esta función de arriba puede retornar 3 cositas:
+
+ ° numBytes
+ ° numTensor 
+ ° memInfo.
+
+Para generar un tensor hay que armar un archivo html que traiga la librería de tensor flow.
+Luego de eso, escribir lo siguiente entre una etiqueta script 
+
+
+tf.tensor([1])
+
+
+
+entonces si ponemos tf.memory().numTensors;
+
+Deevolverá el valor que se encuentra en la variable 'a' 
+
+y si pongo b = a.sum(1)
+
+tf.memory().numTensor devolverá el valor número 2
+
+_______________________________________________________________________________________________________________________________________
+
+Byte = bit
+bit = 0, 1
+
+Un bit es una unidad lógica entre 0 y 1.
+
+_______________________________________________________________________________________________________________________________________
+
+Para mostrar informacion sobre el uso de la memoria se usa 
+console.log("Cantidad de tensores")
+console.log(tf.memory().numTensors)
+console.log("Memoria")
+console.log(tf.memory().numBytes)
+
+_______________________________________________________________________________________________________________________________________
+
+
+const tensor = tensor.tf.tensor2d([1, 2], [3, 4])
+
+
+Para eliminar tensores que no se estan usando se usa tf.disponse pasandole a disponse el tensor
+
+suma.disponse()
+multplicacion.disponse()
+transpuesta.disponse()
+
+Como no podemos estar todo el tiempo eliminando uno por uno se presenta la función tidy
+
+Lo que hace tidy es generar un ámbito de ejecución en el que una vez que se termina su ejecucion lo que hace es borrar los tensores que se utilizaron en su interior
+
+el tf.tidy retorna un valor 
+
+
+const y = tf.tidy() => {
+
+
+De esta forma se podrían realizar alguna operaciones con lo tensores 
+
+    const suma = tensor.add(1);
+    const multplicacion = tensor.mult(2);
+    const transpuesta = tensor.transpose();
+
+
+
+Para escapar de la funcion tidy se puede usar la función keep
+
+tf.keep(tensor.transpuesta)
+
+
+    console.log("Tensores creados en el ámbito de la función tidy")
+    console.log(suma)
+    console.log(multplicacion)
+    console.log(transpuesta)
+
+Vuelvo a mostrar todos los tensores que se encuentran en la memoria con la función memory
+    console.log("Tensores en la memoria: ")
+    console.log(tf.memory().numTensor)
+    console.log("Mmeoria utilizada por los tensores: ")
+    console.log(tf.memory().numBytes)
+
+Mostramos nuevamente los resultados en consola
+
+    console.log("Primer tensor creado: ")
+    tensor.print();
+    console.log("Tensor que se suma por 1:")
+    suma.print();
+    console.log("Tensor que es multiplicado por 2:")
+    multplicacion.print();
+    console.log("Tensor que es la traspuesta del primer tensor creado")
+    transpuesta.print()
+
+
+}
+
+    console.log(multplicacion)
+    console.log(Cantidad de Tensores final:)
+    console.log(tf.memory().numBytes)
+
+
+dato valioso:
+    cuando una constante es creada en el ambito dentro de una función, no se podrá llamar fuera del ese ámbito.
+
+
