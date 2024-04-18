@@ -1,6 +1,6 @@
 _______________________________________________________________________________________________________________________________________
 
-A través de una serie de datos pasados al modelo este se aproxima al valor que brinda la ecuación 2x + 6
+A través de una serie de datos pasados al modelo, este se aproxima al resultado que brinda la ecuación 2x + 6
 
 1. Se agregan las capas con model.add
 2. Se le especifica la formula que usará con model.compile
@@ -162,9 +162,9 @@ dato valioso:
 
 _______________________________________________________________________________________________________________________________________
 
-Se puede crear un tensor indicando espécifico con la función range
+Se puede crear un tensor con unos valores específicos especificando con la función range
 
-tf.range(0, 10,1).print();
+tf.range(0, 10, 1)
 
 la función range recibe 4 parametros.
 
@@ -172,3 +172,55 @@ n°1 - Valor inicial
 n°2 - Límite
 n°3 - Paso
 n°4 - Typo de datos, por defecto con range el tipo de dato es 'float32', se puede cambiar a 'int32' (opcional)
+
+_______________________________________________________________________________________________________________________________________
+
+Con tf.tile se puede crear un tensor con valores repetidos, por ejemplo:
+
+const tensor1 = tf.tensor1d([1, 2, 3, 3, 4, 5, 6])
+
+const tensorNuevo = tensor1.tile([2])
+
+tensorNuevo.print()
+
+la salida del tensor nuevo devolverá:  [1, 2, 3, 3, 4, 5, 6, 1, 2, 3, 3, 4, 5, 6]
+porque en tile([]) se especificó las veces que se deben repetir los valores del tensor original.
+
+_______________________________________________________________________________________________________________________________________
+
+Suponiendo que se tiene un tensor unidimensional con estos valores
+
+ const tensor1 = tf.tensor1d([1, 2, 3, 3, 4, 5, 6, 1, 2, 3, 3, 4, 5, 6])
+ 
+ Y queremos agregar el valor 7 al tensor, es posible hacerlo creando otro tensor unidimensional 
+ 
+ const tensor2 = tf.tensor1d([7])
+ 
+ Que almacene unicamente el valor que queremos agregar, concatenandolo con el tensor que almacena el resto de valores, por ejemplo:
+
+        const tensor3 = tf.concat([tensor1, tensor2]);
+
+La concatenación se deberá guardar en un tercer tensor, lo que significa que el tensor original no será modificado, mostremos el resultado
+        
+        tensor3.print()
+
+salida: [1, 2, 3, 3, 4, 5, 6, 1, 2, 3, 3, 4, 5, 6, 7]
+
+_______________________________________________________________________________________________________________________________________
+
+Tengo un tensor unidimensional
+
+ const tensor1 = tf.tensor1d([1, 2, 3, 3, 4, 5, 6, 7, 8 , 9])
+ tensor1.print()
+
+ salida: [1, 2, 3, 3, 4, 5, 6, 7, 8 , 9]
+
+Quiero que se vea de 3x3, entonces utilizaré la función reshape que me brinda TensorFlow
+
+    tensor1.reshape([3, 3]).print()
+    salida = [
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9]
+    ]
+

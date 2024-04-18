@@ -27,23 +27,21 @@
         tensor2 = tf.reshape(valoresConNuevo2, [10, 10])
         tensor2.print();
 
-        console.log('memoria: ', tf.memory().numBytes)
+        console.log('La memoria antes de multiplicar los tensores: ', tf.memory().numBytes)
 
-        while ((tf.memory().numBytes) <= 67108864) {
+        while ((tf.memory().numBytes) <= 5242880) {
 
             const tensor1 = tf.reshape(valoresConNuevo, [10, 10]);
-            const tensor2 = tf.reshape(valoresConNuevo2, [10, 10]);
+            const tensor2 = tf.reshape(valoresConNuevo2, [10, 10]); 
 
-            tensor1.print();
-            tensor2.print();
-
-            tensor1.mul(2);
-            tensor2.mul(2);
+             tensor3 = tensor1.mul(tensor2);
 
             tf.dispose(tensor1)
             tf.dispose(tensor2)
         }
-        console.log('La memoria final ha llegado a: : ', tf.memory().numBytes, 'Lo que es igual a 64MB');
+        const MB = ((tf.memory().numBytes)/1024)/1024
+        console.log('La memoria final ha llegado a', tf.memory().numBytes, 'lo que es igual a:', MB,'MB');
+        tensor3.print()
        
     </script>
 </body>

@@ -8,13 +8,16 @@
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-vis"></script>
 </head>
 <body>
-    <div id="output-field"></div>
 
-    <div id="loss-graph"></div>
+    <h1>Tensor Flow</h1>
+    <hr>
+
+    <div id="prediccion"></div>
+
 
 
     <script>
-        async function learnLineal(){
+        async function modelo(){
 
             const model = tf.sequential();
             model.add(tf.layers.dense({units: 1, inputShape: [1]}));
@@ -39,10 +42,10 @@
                     }
                 }
             });
-            document.getElementById('output-field').innerText = model.predict(tf.tensor2d([20], [1, 1]));
+            document.getElementById('prediccion').innerText = model.predict(tf.tensor2d([20], [1, 1]));
         }
 
-learnLineal();
+modelo();
 
     </script>
 </body>
