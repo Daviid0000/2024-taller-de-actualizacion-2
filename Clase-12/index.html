@@ -13,10 +13,38 @@
     
     <script>
 
-        const tensor = tensor.tf.tensor2d([1, 2], [3, 4])
-
+        const valores = tf.range(1, 10)
+        valoresRepetidos = tf.tile(valores, [11])
+        const nuevoValor = tf.tensor1d([1]);
+        const valoresConNuevo = tf.concat([valoresRepetidos, nuevoValor]);
+        tensor1 = tf.reshape(valoresConNuevo, [10, 10])
+        tensor1.print();
         
+        const valores2 = tf.range(1, 10)
+        valoresRepetidos2 = tf.tile(valores2, [11])
+        const nuevoValor2 = tf.tensor1d([1]);
+        const valoresConNuevo2 = tf.concat([valoresRepetidos2, nuevoValor2]);
+        tensor2 = tf.reshape(valoresConNuevo2, [10, 10])
+        tensor2.print();
 
+        console.log('memoria: ', tf.memory().numBytes)
+
+        while ((tf.memory().numBytes) < 67108864) {
+
+            const tensor1 = tf.reshape(valoresConNuevo, [10, 10]);
+            const tensor2 = tf.reshape(valoresConNuevo2, [10, 10]);
+
+            tensor1.print();
+            tensor2.print();
+
+            tensor1.mul(2);
+            tensor2.mul(2);
+
+            tf.dispose(tensor1)
+            tf.dispose(tensor2)
+        }
+        console.log('La memoria final ha llegado a: : ', tf.memory().numBytes, 'Lo que es igual a 64MB');
+       
     </script>
 </body>
 </html>

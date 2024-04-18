@@ -93,7 +93,7 @@ console.log(tf.memory().numBytes)
 _______________________________________________________________________________________________________________________________________
 
 
-const tensor = tensor.tf.tensor2d([1, 2], [3, 4])
+const tensor = tf.tensor2d([1, 2, 3, 4], [2, 2])
 
 
 Para eliminar tensores que no se estan usando se usa tf.disponse pasandole a disponse el tensor
@@ -159,3 +159,16 @@ dato valioso:
     cuando una constante es creada en el ambito dentro de una función, no se podrá llamar fuera del ese ámbito.
 
 
+
+_______________________________________________________________________________________________________________________________________
+
+Se puede crear un tensor indicando espécifico con la función range
+
+tf.range(0, 10,1).print();
+
+la función range recibe 4 parametros.
+
+n°1 - Valor inicial
+n°2 - Límite
+n°3 - Paso
+n°4 - Typo de datos, por defecto con range el tipo de dato es 'float32', se puede cambiar a 'int32' (opcional)
