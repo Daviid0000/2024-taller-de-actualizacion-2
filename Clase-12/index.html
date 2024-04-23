@@ -29,7 +29,7 @@
 
         console.log('La memoria antes de multiplicar los tensores: ', tf.memory().numBytes)
 
-        while ((tf.memory().numBytes) <= 5242880) {
+        while ((tf.memory().numBytes) < 5242880) {
 
             const tensor1 = tf.reshape(valoresConNuevo, [10, 10]);
             const tensor2 = tf.reshape(valoresConNuevo2, [10, 10]); 
