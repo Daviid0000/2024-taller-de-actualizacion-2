@@ -34,7 +34,7 @@
       const history = [];
 
       await model.fit(xs, ys, {
-        epochs: 50,
+        epochs: 250,
         callbacks: {
           onEpochEnd: (epoch, log) => {
           history.push(log);

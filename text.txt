@@ -224,3 +224,5 @@ Quiero que se vea de 3x3, entonces utilizaré la función reshape que me brinda 
         [7, 8, 9]
     ]
 
+
+
