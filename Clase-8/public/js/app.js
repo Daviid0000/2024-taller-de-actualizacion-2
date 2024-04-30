@@ -165,14 +165,18 @@ ElButton2.addEventListener('click', () => {
     console.log('Los valores de la matriz 2 son: ', valoresMatriz2)
     console.log('Cantidad de valores de la fila de la matriz 1 son :', val_f_m_1)
     console.log('Cantidad de valores de la columna de la matriz 2 son: ', val_c_m_2)
+    console.log('Cantidad de valores de la columna de la matriz 1 son: ', val_c_m_1)
     
             const resultados = [];
             for (let i = 0; i < val_f_m_1; i++) {
+                console.log("valor de la fila de la matriz 1:",i)
                 const resultadosFila = [];
 
                 for (let j = 0; j < val_c_m_2; j++) {
+                    console.log("valor de la columna de la matriz 2:",j)
                     let suma = 0;
                     for (let k = 0; k < val_c_m_1; k++) {
+                        console.log("valor de la columna de la matriz 1:",k)
                         suma += valoresMatriz1[i * val_c_m_1 + k] * valoresMatriz2[k * val_c_m_2 + j];
                     }
                     resultadosFila.push(suma);
