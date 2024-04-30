@@ -27,13 +27,24 @@ message.textContent = `El mensaaje es:  ${text}`;
                 const elDiv = document.createElement('div')
 
                 const primerResultado = element.results[0];
+                console.log("variable1: ",primerResultado)
+                const probabilidades = primerResultado.probabilities;
+                console.log("variablle2: ", probabilidades)
 
-                const probabilidades = primerResultado.match;
-
-                if(probabilidades){
-                    elDiv.style.backgroundColor = '#f00'
-                    elDiv.style.color = '#fff '
-                }
+                probabilidades.forEach((item) => {
+                    console.log(item)
+                })
+                // if (probabilidades) {
+                //     if (probabilidades[0] < 0.9) {
+                //         elDiv.textContent = `${element.label}: Falso`;
+                //         elDiv.style.backgroundColor = '#fff';
+                //         elDiv.style.color = '#000';
+                //     } else {
+                //         elDiv.textContent = `${element.label}: Verdadero`;
+                //         elDiv.style.backgroundColor = '#f00';
+                //         elDiv.style.color = '#fff';
+                //     }
+                // }
 
                 elDiv.textContent = element.label;
                 elDiv.style.padding = '10px';
