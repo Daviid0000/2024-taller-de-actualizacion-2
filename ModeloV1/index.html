@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TensorFlow.js Example</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.11.0/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-vis"></script>
+</head>
+<body>
+  <h1>Consejos para mejorar tu dibujo</h1>
+
+  <video id="video" width="640" height="480" autoplay></video>
+  <canvas id="canvas" width="640" height="480" style="display:none;"></canvas>
+  <button id="snap">Tomar Foto</button>
+
+  <h2>Sugerencias:</h2>
+  <ul id="suggestions"></ul>
+
+  <script>
+    // Capturar elementos del DOM
+    const video = document.getElementById('video');
+    const canvas = document.getElementById('canvas');
+    const snapButton = document.getElementById('snap');
+    const suggestionsList = document.getElementById('suggestions');
+
+    // Función para capturar imagen de la cámara
+    async function takeSnapshot() {
+      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+      video.srcObject = stream;
+
+      const context = canvas.getContext('2d');
+      context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+      // Procesar la imagen capturada
+      const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+      const tensor = preprocessImage(imageData);
+
+      // Usar el modelo pre-entrenado para obtener sugerencias
+      const suggestions = await getDrawingSuggestions(tensor);
+
+      // Mostrar sugerencias al usuario
+      displaySuggestions(suggestions);
+
+      // Detener la captura de video
+      stream.getTracks().forEach(track => track.stop());
+    }
+
+    // Función para preprocesar la imagen
+    function preprocessImage(imageData) {
+      // Implementa el preprocesamiento necesario (por ejemplo, cambio de tamaño, normalización)
+      // Retorna un tensor TensorFlow
+    }
+
+    // Función para obtener sugerencias para mejorar el dibujo
+    async function getDrawingSuggestions(inputTensor) {
+      // Carga el modelo pre-entrenado
+      const model = await tf.loadLayersModel('URL_del_modelo_preentrenado');
+
+      // Realiza la predicción con el modelo
+      const output = model.predict(inputTensor);
+
+      // Procesa la salida del modelo para obtener sugerencias
+      // Retorna las sugerencias como un array de strings
+    }
+
+    // Función para mostrar las sugerencias al usuario
+    function displaySuggestions(suggestions) {
+      suggestionsList.innerHTML = ''; // Limpiar sugerencias anteriores
+
+      suggestions.forEach(suggestion => {
+        const listItem = document.createElement('li');
+        listItem.textContent = suggestion;
+        suggestionsList.appendChild(listItem);
+      });
+    }
+
+    // Event listener para el botón de tomar foto
+    snapButton.addEventListener('click', takeSnapshot);
+  </script>
+</body>
+</html>

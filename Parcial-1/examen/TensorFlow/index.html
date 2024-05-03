@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TensorFlow.js Example</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.11.0/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-vis"></script>
+</head>
+<body>
+  <h1>TensorFlow.js Example</h1>
+
+  <div>
+    <div>Formula: y = 2x + 5</div>
+    <input type="number" id="inputX" placeholder="Ingrese el valor de X">
+    <button onclick="trainModel()">Entrenar</button>
+    <button onclick="predict()">Predecir</button>
+  </div>
+
+  <div id="result"></div>
+
+  <div id="entrenamiento"></div>
+
+  <script>
+    const model = tf.sequential();
+    model.add(tf.layers.dense({units: 1, inputShape: [1]}));
+    model.compile({loss: 'meanSquaredError', optimizer: 'sgd'});
+
+  const xs = tf.tensor2d([-4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [15, 1]);
+  const ys = tf.tensor2d([-7, -1,  1,  3, 5, 7, 9, 11,13,15,17,19,21,23,25], [15, 1]);
+
+    async function modeloEntrenado(){
+      const surface = { name: 'Loss', tab: 'Training' };
+      const history = [];
+
+      await model.fit(xs, ys, {
+        epochs: 525,
+        callbacks: {
+          onEpochEnd: (epoch, log) => {
+          history.push(log);
+          tfvis.show.history(surface, history, ['loss']);
+          }
+        }
+      })
+
+    }
+
+    async function trainModel() {
+      const entrenamiento = document.getElementById('entrenamiento');
+      await modeloEntrenado();
+      await model.fit(xs, ys, {epochs: 525});
+      console.log('Entrenamiento completado');
+      
+      const content = document.createElement('div')
+      content.textContent = 'Entrenamiento completado.'
+      entrenamiento.appendChild(content)
+
+    }
+
+    async function predict() {
+      const inputX = parseFloat(document.getElementById('inputX').value );
+      const inputTensor = tf.tensor2d([inputX], [1, 1]);
+      const result = model.predict(inputTensor);
+      const output = await result.data();
+      document.getElementById('result').innerText = `Para x = ${inputX}, y = ${output[0]}`;
+    }
+    
+  </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+| Presionar tecla 'Alt + Z' para mejor lectura |
+
+Alumno: Sánchez Liva Facundo Álvaro David
+
+Tema 1
+
+1 - ¿Un modelo contiene todos los datos posibles existentes en el universo conocido para su entrenamiento?.
+
+
+_______________________________________________________________________________________________________________________________________
+
+2 - Explique lo que permite hacer la función tf.tidy() y tf.dispose().
+
+[RESPUESTA]
+
+Lo que hace tidy es generar un ámbito de ejecución en el que una vez que se termina su ejecucion lo que hace es borrar de la memoria los tensores que se utilizaron en su interior.
+
+Lo que hace dispose es eliminar de la memoria los tensores que sabemos que se utilizaran una sola vez, mayormente esta eliminación se hace de manera manual.
+
+_______________________________________________________________________________________________________________________________________
+
+
+3 - ¿Cuál es la diferencia entre el aprendizaje supervisado y el aprendizaje no supervisado?, 
+    cuando no tenemos datos etiquetados de un problema en particular donde queremos implementar 
+	aprendizaje automático, que tipo de aprendizaje se recomienda utilizar ?.
+
+    [RESPUESTA]
+
+    La principal diferencia entre aprendizaje supervisado y no supervisado es que el aprendizaje supervisado consta de etiquetas que se le brinda al modelo en su entrenamiento mientras que al no supervisado unicamente se le brindan carácterísticas en la entrada. Por esa razón en el caso de no tener datos etiquetados en un problema en particular se recomienda el uso del aprendizaje no supervisado.
+
+_______________________________________________________________________________________________________________________________________
+
+
+4 – Explique la diferencia de Funcion Sincrona y Ascincrona 
+
+[RESPUESTA]
+
+Las funciones síncronas son aquellas que se ejecutan una por una secuencialmente, en estas funciones no es posible ejecutar una función sin que la anteror haya sido completada.
+
+Las funciones asíncronas son lo contrario a las funciones síncronas, estas funciones pueden quedar en segundo plano mientras se siguen ejecutando las demás funciones.
+
+
+_______________________________________________________________________________________________________________________________________
+
+5 - Corrija el sistema Adjunto 	[FALTÓ COMPLETAR]
+ 
+6 - Realice un sistema que entrene 525 épocas y que prediga el valor de Y para un                           [COMPLETADO]
+    valor x = 50 para la formula Y = 2X + 5 , ingresando para el entrenamiento 15 valores de pruebas 
+	comenzando por -4,  mostrando en pantalla el valor predicho de Y. Grafique la función de perdida.
+
