@@ -1,0 +1,38 @@
+Creación de modelo para predecir los valores de una ecuación.
+
+Se importan las librerias de Tensor Flow para hacer el modelado y gráficar los resultados: {
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.11.0/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-vis"></script>
+
+}
+
+En el HTML se crean 3 elementos principales:
+
+{
+    -Input
+    -Botón 1
+    -Botón 2
+}
+
+El input es de tipo número y tiene un id por el cual se le podrá identificar.
+
+El primer botón tiene la propiedad onclick por la cual se le pasa una función que ejecutará el entrenamiento del modelo que predice la ecuación.
+
+Al segundo botón también se le pasa una función la cual se encarga de predecir el resultado y mostrarlo por pantalla.
+
+Existen dos elementos extra en el body. Por defecto están vacíos a la espera de la llamada de su función para que en ellas se renderice su contenido. Ambos elementos son un <div></div> el primer 'div' almacena el resultado de la predicción. El segundo 'div' almacena un mensaje que avisa sobre la finalización del entrenamiento del modelo.
+
+En el mismo archivo HTML se inserta el script que almacena las funciones de predicción, entrenamiento e incluso carga del modelo.
+
+En primera instancia se define un modelo con el nombre 'modal'.
+
+Luego se carga el modelo con una capa densa y especificando la cantidad de neuronas que el modelo tendrá y la cantidad de valores de entrada que recibirá.
+
+Posteriormente se crean dos tensores bidimensionales. El primer tensor tiene los valores de entrada. El segundo tensor tiene los valores de salida.
+
+La primer función se encarga de entrenar el modelo y gráficar las pérdidas. Para esto se crea un objeto con los valores del título y subtítulo del gráfico. Tambíen se crea un arreglo que almacenará las pérdidas. Luego se espera a que el modelo se entrene pasandole los valores de los tensores ya definidos anteriormente. Se define las veces que se entrenará el modelo y se obtienen los valores de las pérdidas a través de una función creada mediante entrena el modelo. Los valores de la pérdida de almacenan en el arreglo previamente creado y se gráfican las pérdidas con el médoto 'tfvis' pasandole el título, subtítulo y pérdidas como parámetro.
+
+La segunda función se encarga de ejecutar el entrenamiento del modelo.
+
+La tercer función se encarga de predecir el valor de entrada del input. Para llevar a cabo la predicción, el valor de entradad es utilizado para crear un tensor bidimensional. Se pasa el tensor recién creado a un modelo de Tensor Flow que se encargará de hacer las predicciones. Estas predicciones se almacenarán en una constante. Se esperará a que la predicción esté lista para ser mostrada por pantalla.
